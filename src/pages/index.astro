@@ -1,11 +1,85 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from '../components/Hero.astro';
+import NavBar from '../components/NavBar.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<NavBar />	
+	  <Hero />
+<h1 class="nuestrosServicios"> NUESTROS SERVICIOS</h1>
+<div class="serviciosContainer">
+	<div class="serviciosDiv">
+		<img src="src/assets/fabrica.png" alt="#">
+		<h2>Torneado</h2>
+	</div>
+	<div class="serviciosDiv">
+		<img src="src/assets/fresadora.png" alt="#">
+		<h2>Fresado</h2>
+	</div>
+	<div class="serviciosDiv">
+		<img src="src/assets/micrometro.png" alt="#">
+		<h2>Mecanizado de piezas de precision</h2>
+	</div>
+	<div class="serviciosDiv">
+		<img src="src/assets/gear-svgrepo-com.svg" alt="#">
+		<h2>Mecanizado de engranajes</h2>
+	</div>
+
+
+
+
+</div>
+
 </Layout>
+
+<style>
+	 :root {
+    --nav-bg: rgba(255, 255, 255, 0.9);
+    --nav-text: #1a1a1a;
+    --accent: #0055aa; /* Azul industrial */
+  }
+
+
+  .nuestrosServicios {
+	text-align: center;
+	margin-top: 2rem;
+	margin-bottom: 4rem;
+	font-size: 2.5rem;
+	color: var(--accent);
+	font-family: "Montserrat", Sans-serif;
+    font-weight: 800;
+  }
+
+  .serviciosContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 3rem;
+	background-color: rgb(240, 240, 240);
+  }
+  .serviciosDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	color: var(--accent);
+	font-family: "Montserrat", Sans-serif;
+    font-weight: 800;
+	padding: 2rem;
+	text-align: center;
+  }
+
+
+  .serviciosDiv img {
+	width: clamp(60px, 40%, 120px);
+  }
+
+  @media (max-width: 600px) {
+	.serviciosContainer {
+	  grid-template-columns: 1fr;
+	  margin-left: 10%;
+	  margin-right: 10%;
+  }
+  </style>
+
+  

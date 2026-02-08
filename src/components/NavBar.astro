@@ -1,0 +1,134 @@
+<style>
+  :root {
+    --nav-bg: rgba(255, 255, 255, 0.9);
+    --nav-text: #1a1a1a;
+    --accent: #0055aa; /* Azul industrial */
+  }
+
+  .nav-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-family: sans-serif;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--nav-text);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: var(--nav-text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: var(--accent);
+  }
+
+  /* Botón móvil (Hamburguesa) */
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--nav-text);
+    transition: 0.3s;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .mobile-toggle { display: block; }
+    
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      left: -100%;
+      flex-direction: column;
+      background: white;
+      width: 100%;
+      text-align: center;
+      transition: 0.4s;
+      box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+      padding: 2rem 0;
+    }
+
+    .nav-menu.active { left: 0; }
+
+    li {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 5%;
+    }
+  }
+</style>
+
+<header class="nav-header">
+  <div class="nav-container">
+    <a href="/" class="logo">Metal<span>Works</span></a>
+    
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#inicio" class="nav-link">Inicio</a></li>
+      <li><a href="#servicios" class="nav-link">Servicios</a></li>
+      <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+    </ul>
+
+    <button class="mobile-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const hamburger = document.getElementById("mobile-menu");
+  const navMenu = document.getElementById("nav-menu");
+
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      // Opcional: animar la hamburguesa a una "X"
+      hamburger.classList.toggle("is-active");
+    });
+
+    // Cerrar menú al hacer click en un link
+    document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+    }));
+  }
+</script>
